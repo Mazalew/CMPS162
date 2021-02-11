@@ -1,0 +1,101 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>CMPS 162: Module 5 Programming Project</title>
+<style>* { font-family: monospace; }</style>
+<script>
+
+//--------//
+// Events //
+//--------//
+console.log("Events");
+
+// 1. Change the link (the <a> tag) in the HTML body below such that a hello
+//    message is displayed on a click event.
+
+
+//Done - tested and works
+
+//--------------//
+// Input Fields //
+//--------------//
+console.log("Input Fields");
+
+// 1. Change the background color to red for the input text field (the <input>
+//    tag) in the HTML body when obtaining the focus and change it back to
+//    white when the focus is lost.
+
+//Done - tested and works
+
+// 2. Read the content of the input field (the <input> tag) when the focus is
+//    lost and alert it to the user.
+
+//Done - tested and works
+
+//------------//
+// Paragraphs //
+//------------//
+console.log("Paragraphs");
+
+// 1. Write JavaScript code that changes the text in the paragraph below
+//    (the <p> tag) from "Hello World!" to "Goodbye World!".
+
+//Done - tested and works
+
+//--------//
+// Images //
+//--------//
+console.log("Images");
+
+// 1. Add an image to the HTML body (use the <img> tag). Make it disappear when
+//    someone clicks on it.
+
+//Done - tested and works
+
+//--------//
+// Styles //
+//--------//
+console.log("Styles");
+
+// 1. Use the style of div1 and div2 to swap the colors of the divs.
+
+function swapColors() {
+  // TODO
+  var d1 = document.getElementById("div1").style.backgroundColor;
+  var d2 = document.getElementById("div2").style.backgroundColor;
+
+  document.getElementById("div1").style.backgroundColor = d2;
+  document.getElementById("div2").style.backgroundColor = d1;
+}
+
+//Done - tested and works
+
+</script>
+</head>
+<body>
+  See console!<br><br>
+  <a href="JavaScript:void(0)" onClick="alert('Hello');"> Click here for a greeting!</a><br><br>
+  <input type="text" id="message"
+  onFocus="this.style.backgroundColor = 'red';"
+  onBlur="this.style.backgroundColor = 'white';
+          alert(document.getElementById('message').value);"><br><br>
+
+  <p id="Hello">Hello World!
+    <a href="JavaScript:void(0);" onClick="document.getElementById('Hello').innerHTML = 'Goodbye World!';"> Click here to change "Hello World"</a>
+  </p>
+  <div id="div1"
+       style="background-color:yellow;"
+       onclick="swapColors();">
+    Hello
+  </div>
+  <div id="div2"
+       style="background-color:green;"
+       onclick="swapColors();">
+    World
+  </div>
+  <img src="Skeletor.jpg" id="Skeletor"
+       onclick="document.getElementById('Skeletor').style.visibility = 'hidden';">
+  </img>
+</body>
+</html>
