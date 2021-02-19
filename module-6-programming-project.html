@@ -1,0 +1,146 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>CMPS 162: Module 6 Programming Project</title>
+<style>* { font-family: monospace; }</style>
+<script>
+
+//---------------------------//
+// The Document Object Model //
+//---------------------------//
+console.log("The Document Object Model");
+
+// 1. Complete the Fahrenheit to Celsius converter below. The following tasks
+//    remain: (1) on the blur event in the Fahrenheit input field call the
+//    fahrenheitToCelsius function, (2) on the blur event in the Celsius input
+//    field call the celsiusToFahrenheit function, (3) implement the
+//    fahrenheitToCelsius function that reads from the Fahrenheit input field,
+//    performs the conversion, and writes to the Celsius field, and
+//    (4) implement the celsiusToFahrenheit function that reads from the Celsius
+//    input field, performs the conversion, and writes to the Fahrenheit field.
+//    The conversion formulas are here: https://en.wikipedia.org/wiki/Fahrenheit
+//    An example is that 80 degrees Fahrenheit should be 26.7 degrees Celsius
+//    (and vice versa).
+
+function fahrenheitToCelsius() {
+  var f = document.getElementById("fahrenheit").value;
+  var c = (f - 32) * 5/9;
+  alert("The tempature in celsius is " + c);
+}
+
+function celsiusToFahrenheit() {
+  var c = document.getElementById("celsius").value;
+  var f = (c * 9/5) + 32;
+  alert("The tempature in Fahernheit is " + f);
+}
+
+// 2. Write a function to use a button that is the action event
+//    When the user selects the button it sets a timer to use the alert function in javascript
+//    It calls a function that sums 2 numbers up and divides by another number
+//    The output will read Welcome to the world of Oz and your number is __<-- The number that sums and divides
+
+function eventt() {
+  var m = null;
+  var t = null;
+  var r = null;
+  var number = null;
+
+  while (true) {
+    if (number === null){
+      number = Math.random();
+    }
+    while (number < 1) {
+      number = number * 10;
+    }
+
+    number = Math.floor(number);
+
+    if (m === null) {
+      m = number;
+      number = null;
+    }
+    else if (t === null) {
+      t = number;
+      number = null;
+    }
+    else if (r === null) {
+      r = number;
+      number = null;
+    }
+    else {
+      break;
+    }
+  }
+
+  alert("Welcome to the world of Oz and your number is " + (m + t) / r);
+}
+
+// 3. Write a function to provide the following
+//    the current browser and operation system that you are using and if cookies is Enabled
+
+  function techInfo() {
+    //Browser
+    var browser = navigator.userAgent;
+
+    if (browser.indexOf("Chrome") !== -1){
+      document.getElementById("Current Browser").innerHTML = "You are currently using " + "Chrome";
+    }
+    else if (browser.indexOf("Safari") !== -1){
+      document.getElementById("Current Browser").innerHTML = "You are currently using " + "Safari";
+    }
+    else if (browser.indexOf("Firefox") !== -1){
+      document.getElementById("Current Browser").innerHTML = "You are currently using " + "Firefox";
+    }
+    else if (browser.indexOf("Opera") !== -1){
+      document.getElementById("Current Browser").innerHTML = "You are currently using " + "Opera";
+    }
+    else {
+      document.getElementById("Current Browser").innerHTML = "You are currently using " + "unknown";
+    }
+
+    //OS
+    var OS = navigator.oscpu;
+
+    if (OS.indexOf("Windows") !== -1) {
+      document.getElementById("OS").innerHTML = "You are currently using " + "Windows";
+    }
+    else if (OS.indexOf("Mac") !== -1) {
+      document.getElementById("OS").innerHTML = "You are currently using " + "Mac OS";
+    }
+    else if (OS.indexOf("Linux") !== -1) {
+      document.getElementById("OS").innerHTML = "You are currently using " + "Linux";
+    }
+
+    //Cookies
+    if (navigator.cookieEnabled === "false") {
+      document.getElementById("Cookies").innerHTML = "Cookies are not enabled";
+    }
+    else{
+    document.getElementById("Cookies").innerHTML = "Cookies are enabled";
+    }
+  }
+
+</script>
+</head>
+<body>
+  See console!<br><br>
+  <input type="text" id="fahrenheit"
+        onBlur="fahrenheitToCelsius();"> - enter fahrenheit<br>
+  or<br>
+  <input type="text" id="celsius"
+        onBlur="celsiusToFahrenheit();"> - enter celsius<br>
+  or<br>
+  <input type="button" id="Event"
+              onClick="window.setTimeout(eventt(), 3000);"> - Click here to see an event!<br>
+  or<br>
+  <input type="button" id="Info"
+              onClick="techInfo();"> - Click here to get some tech info!<br>
+  <div id="Current Browser">
+  </div>
+  <div id="OS">
+  </div>
+  <div id="Cookies">
+  </div>
+</body>
+</html>
