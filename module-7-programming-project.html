@@ -1,0 +1,106 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>CMPS 162: Module 7 Programming Project</title>
+<style>* { font-family: monospace; }</style>
+<script>
+
+//---------//
+// Objects //
+//---------//
+console.log("Objects");
+
+// 1. Complete the implementation of the Circle object that has methods to
+//    calculate the area and circumference. You can find a start of the code
+//    and how the object is supposed to be used below. Note that the initial
+//    code has several lines commented out that you should complete.
+
+function Circle(radius) {
+  this.radius = radius;
+  this.getArea = function() {
+    var Area = Math.PI * (this.radius * this.radius);
+    return Area.toFixed(2);
+  };
+  this.getCircumference = function() {
+    var Circumference = Math.PI * 2 * this.radius;
+    return Circumference.toFixed(2);
+  };
+}
+
+// implement the methods
+// ...
+
+// create the Circle object
+var circle = new Circle(10);
+
+// calculate area
+var area = circle.getArea();
+
+// calculate circumference
+var circumference = circle.getCircumference();
+
+// show output to user, Done.
+alert("The area of your circle is " + area);
+alert("The curcumference of your circle is " + circumference);
+
+// 2. Write the same implementation for a rectangle. Note that the constructor
+//    takes two parameters in this case: width and height.
+function Rectangle(width, height) {
+  this.width = width;
+  this.height = height;
+  this.getArea = function () {
+    var area = this.width * this.height;
+    return area;
+  };
+  this.perimeter = function () {
+    var perimeter = 2 * (this.width * this.height);
+    return perimeter;
+  };
+}
+
+// create the Rectangle object
+var rectangle  = Rectangle(10, 12);
+
+//calculate area
+var rec_area = rectangle.getArea();
+
+//calculate perimeter
+var rec_circumference = rectangle.getCircumference();
+
+// show output to user, Done.
+alert("The area of your rectangle is " + rec_area);
+alert("The curcumference of your rectangle is " + rec_circumference);
+
+//-----------------//
+// Browser Control //
+//-----------------//
+console.log("Browser Control");
+
+// 1. Create a link in the HTML body that onclick does the following things:
+//    (1) checks if a popup blocker is enabled, and if yes alerts a warning,
+//    (2) opens a page in a new window to https://it.pointpark.edu/
+
+
+
+</script>
+</head>
+<body>
+  See console! <br></br>
+  <button onclick = "doThings()"> Click here </button>
+  <script>
+
+  //Checks for popup blocker and opens new page
+  function doThings() {
+    var testPopUp = window.open("", "", "width = 100, height = 100");
+    if (testPopUp === null || typeof(testPopUp) === "undefined") {
+      alert("You currently have popup blocker enabled");
+    }
+    testPopUp.close();
+
+    var website = window.open();
+    website.location.href = "https://it.pointpark.edu/";
+  }
+  </script>
+</body>
+</html>
