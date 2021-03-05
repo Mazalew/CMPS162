@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<title>CMPS 162: Module 8 Programming Project</title>
+<style>* { font-family: monospace; }</style>
+<script>
+
+//-----------------//
+// Form Validation //
+//-----------------//
+console.log("Form Validation");
+
+// 1. Implement the validateSSN function that should get the SSN from the SSN
+//    input field and then checks the format. The results should be reported to
+//    the user in the status div. You should make sure the SSN is of the
+//    format 123-45-6789, which means you have to do 3 checks: (1) make sure
+//    the length is 11, (2) make sure the dashes are in the 4th and 7th
+//    position, and (3) all the other characters are numbers.
+
+function validateSSN() {
+  var SSN = document.getElementById("SSNField").value;
+  try {
+    if (SSN.length !== 11) {
+      throw "Invalid SSN length.";
+    }
+    if (SSN.indexOf("-") !== 3 || SSN.lastIndexOf("-") !== 6) {
+      throw "Invalid SSN format: '-' are in invalid spots.";
+    }
+
+    for (var i = 0; i < 11; i++) {
+      if (SSN[i] === "-"){
+      }
+      else {
+        var char = parseInt(SSN[i]);
+        if (isNaN(char)) {
+          throw "Invalid SSN format: Must contain only numbers and '-' characters.";
+        }
+      }
+    }
+   alert(SSN + " is valid.");
+  }
+  catch(e) {
+    alert (e);
+  }
+  // make sure the total number of characters is 11  DONE
+  // make sure the 4th and and 7th characters are dashes DONE
+  // make sure the rest of the characters are numbers DONE
+}
+
+
+
+//------------//
+// Exceptions //
+//------------//
+console.log("Exceptions");
+
+// 1. How would you modify your code above to use exceptions to handle
+//    incorrect SSNs? Include code snippets in your answer (so it has to be
+//    more than just words).
+
+/*I have already included exceptions in my code above.  I found it to be more useful then
+having a bunch of if else statements testing each condition when the try catch
+makes it more condensed and easier to read.
+
+I made the try catch surround test the three condtions: SSN is equal to 11 characters,
+the 4th and 7th characters are dashes, and all characters are either numbers or
+dashes.  If any of the fail, they will throw an exeption and the catch statement will
+alert the user what the problem is.
+
+I used the following format to program these:
+try {
+  var - get SSN value
+  1. For - make sure it is all numbers and dashes
+       checks for dashes
+         does nothing about dashes
+       checks for number
+         if not a number
+           throw exception
+  2. if SSN length not 11
+         throw expetion
+  3. if dahses not in correct spots
+         throw exception
+}
+catch (exception) {
+alert the exception (if any).
+}
+*/
+
+//----------------//
+// More On Events //
+//----------------//
+console.log("More On Events");
+
+// 1. Attach onfocus and onblur events to the SSNField below using only
+//    JavaScript, i.e., do not modify the HTML. Change the background of the
+//    text input field on these events.
+
+window.onload = function() {
+  var SSNField = document.getElementById("SSNField");
+
+  SSNField.onfocus = SSNField.style.backgroundColor = "red";
+  SSNField.onblur = SSNField.style.backgroundColor = "yellow";
+};
+
+
+
+</script>
+</head>
+<body>
+  See console!<br><br>
+  <input type="text" id="SSNField">
+  <input type="button" value="Check" onclick="validateSSN();">
+  <br><br>
+  <div id="statusDiv">
+    Please enter an SSN and press Check!
+  </div>
+
+
+</body></html>
